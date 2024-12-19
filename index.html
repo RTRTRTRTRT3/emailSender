@@ -48,20 +48,22 @@
 
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
   <script>
-    function sendmail(){
+    function sendmail() {
 
-      emailjs.init("MPphFInKLXni2mX2X"); // мой публичный ID пожалуйтса не воруйте мои данные
+      emailjs.init("MPphFInKLXni2mX2X"); // Ваш публичный ID
 
       var params = {
         firstname: document.querySelector("#firstname").value,
         lastname: document.querySelector("#lastname").value,
-        email: document.querySelector("#email").value,
-        message: document.querySelector("#message").value
+        email: document.querySelector("#email").value, // email отправителя
+        message: document.querySelector("#message").value,
+        to_email: document.querySelector("#email").value // email получателя
       };
 
       var serviceID = "service_5wkxw1n"; // ID сервиса
-      // var templateID = ""; // у меня нет шаблона тут пусто не смотрите сюда
+      var templateID = ""; // Пустой templateID, так как шаблон не используется
 
+      // Отправка данных через emailjs
       emailjs.send(serviceID, templateID, params)
         .then(function(res) {
           alert("Email sent successfully");
